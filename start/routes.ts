@@ -20,10 +20,18 @@
 
 import Route from '@ioc:Adonis/Core/Route'
 import AuthController from '../app/Controllers/Http/AuthController';
+import AuthController from '../app/Controllers/Http/GoogleAuthsController';
+import AuthController from '../app/Controllers/Http/HomeController';
 
-Route.get('/', async ({ view }) => {
-  return view.render('home')
-})
 
-Route.get('/signup', 'AuthController.signup')
-Route.get('/login', 'AuthController.login')
+
+
+
+
+
+
+
+Route.get('/', 'HomeController.home')
+Route.get('/google/callback', 'GoogleAuthsController.callback')
+Route.get('/google/signin', 'GoogleAuthsController.signin')
+Route.get('/logout', 'GoogleAuthsController.logout')
