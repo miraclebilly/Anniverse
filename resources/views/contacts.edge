@@ -1,25 +1,37 @@
 @layout('layouts/main')
-@set('title', 'signup')
+@set('title', 'contacts')
 
 @section('body')
 
-{{ inspect(flashMessages.all()) }}
-<h2 class="is-size-2 m-4 ml-6">Sign Up</h2>
+{{--  {{ inspect(flashMessages.all()) }}  --}}
 
-<form action="/signup" method="POST">
+
+
+<form action="/addcontact" method="POST" class="is-flex is-flex-direction-column is-align-items-center">
+
+    <h2 class="is-size-2 m-4 ml-6">Add Contact</h2>
     
-    <div class="m-4 ml-6" style="width: 30%">
+    
+    <div class="m-4 ml-6 has-background-white p-5" style="width: 30%">
 
             <div class="field">
                 <label class="label">First Name</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input class="input is-success" type="text" name="firstName" placeholder="Miracle">
+                    <input type="text" name="firstName" placeholder="Miracle" class="input is-success {{ flashMessages.get('errors.firstName') ? 'input is-danger' : '' }} " 
+                    value="{{ flashMessages.get('firstName') || ''}}"
+                    >
                     <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
                     </span>
                     <span class="icon is-small is-right">
                     <i class="fas fa-check"></i>
                     </span>
+
+                    @if (flashMessages.has('errors.firstName'))
+                        <div class="has-text-danger">
+                            {{ flashMessages.get('errors.firstName')    }}
+                        </div>
+                    @endif
             </div>
             </div>
             
@@ -39,7 +51,7 @@
             <div class="field">
             <label class="label">Email</label>
             <div class="control has-icons-left has-icons-right">
-                <input class="input is-danger" type="email" name="email" placeholder="miracle@gmail.com">
+                <input class="input is-success" type="email" name="email" placeholder="miracle@gmail.com">
                 <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
                 </span>
@@ -50,26 +62,23 @@
             </div>
 
             <div class="field">
-            <label class="label">Password</label>
+            <label class="label">Phone Number</label>
                 <p class="control has-icons-left">
-                    <input class="input" type="password" name="password" placeholder="Password">
+                    <input type="text" name="phoneNumber" placeholder="0801231234" class="input is-success {{ flashMessages.get('errors.phoneNumber') ? 'input is-danger' : '' }} " 
+                    value="{{ flashMessages.get('phoneNumber') || ''}}">
                     <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                     </span>
                 </p>
+                @if (flashMessages.has('errors.phoneNumber'))
+                    <div class="has-text-danger">
+                        {{ flashMessages.get('errors.phoneNumber')    }}
+                    </div>
+                 @endif
             </div>
 
-            <div class="field">
-                <label class="label">Retype-Password</label>
-                    <p class="control has-icons-left">
-                        <input class="input" type="password" name="password_confirmation" placeholder="Confirm Password">
-                        <span class="icon is-small is-left">
-                        <i class="fas fa-lock"></i>
-                        </span>
-                    </p>
-            </div>
-            
-            <div class="control">
+                        
+            <div class="control is-flex is-justify-content-center mt-6">
                 <button class="button is-link" type="submit">Submit</button>
             </div>
     </div>

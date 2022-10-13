@@ -17,11 +17,12 @@
 | import './routes/customer''
 |
 */
-
+//imports
 import Route from '@ioc:Adonis/Core/Route'
 import AuthController from '../app/Controllers/Http/AuthController';
 import AuthController from '../app/Controllers/Http/GoogleAuthsController';
 import AuthController from '../app/Controllers/Http/HomeController';
+import AuthController from '../app/Controllers/Http/ContactsController';
 
 
 
@@ -29,9 +30,12 @@ import AuthController from '../app/Controllers/Http/HomeController';
 
 
 
-
+//handle routes
 
 Route.get('/', 'HomeController.home')
+Route.get('/contacts/new', 'ContactsController.contact')
+Route.post('/addcontact', 'ContactsController.addContact')
+//authentication route
 Route.get('/google/callback', 'GoogleAuthsController.callback')
 Route.get('/google/signin', 'GoogleAuthsController.signin')
 Route.get('/logout', 'GoogleAuthsController.logout')
