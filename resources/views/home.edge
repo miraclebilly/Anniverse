@@ -2,7 +2,27 @@
 @set('title', 'home page')
 
 @section('body')
-<h1 class='is-size-1'>Welcome to Anniverse</h1>
-<p>No more apology for forgetting your friend's birthday or anniversary</p>
+
+@if(!auth.isLoggedIn) 
+    <div class="mt-4 ml-4">
+        <h1 class='is-size-1'>Welcome to Anniverse</h1>
+        <p>No more apology for forgetting your friend's birthday or anniversary</p>
+        <h4 class="is-size-3"><b>Kindly Login to access our awesome features</b></h4>
+    </div>
+@else
+    <div>
+        <h4 class="is-size-3 ml-4 mt-4"><b>Contacts</b></h4>
+        @each(contact in showContact)
+            <div class="content">
+                    <ul type="1 ">
+                      <li class="has-background-white ml-3 pl-3" style="width:10%; border-radius:25px">
+                      <a href="contacts/{{contact.id}}">{{contact.firstName}}</a>
+                      </li>
+                    </ul>
+        @endeach
+    </div>
+    
+@endif
+
 
 @endsection 

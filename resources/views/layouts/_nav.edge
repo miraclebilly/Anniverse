@@ -5,8 +5,9 @@
         <a class="navbar-item has-text-white ml-6" href="/">
          <strong>Home</strong> 
         </a>
-  
-        <a class="navbar-item has-text-white" href="contacts/new"><strong>Add Contacts</strong></a>
+        @if(auth.isLoggedIn)
+            <a class="navbar-item has-text-white" href="contacts/new"><strong>Add Contacts</strong></a>
+         @endif
       </div>
       
       <div class="navbar-end">

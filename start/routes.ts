@@ -33,8 +33,15 @@ import AuthController from '../app/Controllers/Http/ContactsController';
 //handle routes
 
 Route.get('/', 'HomeController.home')
-Route.get('/contacts/new', 'ContactsController.contact')
-Route.post('/addcontact', 'ContactsController.addContact')
+
+//add users contact
+Route.group(()=>{
+  Route.get('/contacts/new', 'ContactsController.new')
+  Route.post('/addcontact', 'ContactsController.addContact')
+  Route.get('/contacts/:id', 'ContactsController.show')
+  Route.get('/contacts/:id/edit', 'ContactsController.edit')
+}).middleware(['auth'])
+
 //authentication route
 Route.get('/google/callback', 'GoogleAuthsController.callback')
 Route.get('/google/signin', 'GoogleAuthsController.signin')
