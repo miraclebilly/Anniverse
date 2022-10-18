@@ -40,6 +40,8 @@ Route.group(()=>{
   Route.post('/addcontact', 'ContactsController.addContact')
   Route.get('/contacts/:id', 'ContactsController.show')
   Route.get('/contacts/:id/edit', 'ContactsController.edit')
+  Route.put('/contacts/:id', 'ContactsController.update')
+  Route.delete('/contacts/:id', 'ContactsController.delete')
 }).middleware(['auth'])
 
 //authentication route

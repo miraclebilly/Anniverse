@@ -4,19 +4,83 @@
 @section('body')
 
 
-<h1>You have reached the edit page</h1>
+<form class="is-flex is-flex-direction-column is-align-items-center" action="/contacts/{{contact.id}}?_method=PUT"
+             method="POST" enctype="multipart/form-data">
 
+    <h2 class="is-size-2 m-4 ml-6">Edit Contact</h2>
+    
+    
+    <div class="m-4 ml-6 has-background-white p-5" style="width: 30%">
 
+            <div class="field">
+                <label class="label">First Name</label>
+                <div class="control has-icons-left has-icons-right">
+                <input type="text" name="firstName"  class="input is-success {{ flashMessages.get('errors.firstName') ? 'input is-danger' : '' }} " 
+                    value="{{contact.firstName}}"
+                    >
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-user"></i>
+                    </span>
+                    <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                    </span>
 
+                    @if (flashMessages.has('errors.firstName'))
+                        <div class="has-text-danger">
+                            {{ flashMessages.get('errors.firstName')    }}
+                        </div>
+                    @endif
+            </div>
+            </div>
+            
+            <div class="field">
+            <label class="label">Last Name</label>
+            <div class="control has-icons-left has-icons-right">
+            <input class="input is-success" type="text" name="lastName" value="{{contact.lastName}}">
+                <span class="icon is-small is-left">
+                <i class="fas fa-user"></i>
+                </span>
+                <span class="icon is-small is-right">
+                <i class="fas fa-check"></i>
+                </span>
+            </div>
+            </div>
+            
+            <div class="field">
+            <label class="label">Email</label>
+            <div class="control has-icons-left has-icons-right">
+                <input class="input is-success" type="email" name="email" value="{{contact.email}}" >
+                <span class="icon is-small is-left">
+                <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                <i class="fas fa-exclamation-triangle"></i>
+                </span>
+            </div>
+            </div>
 
+            <div class="field">
+            <label class="label">Phone Number</label>
+                <p class="control has-icons-left">
+                    <input type="text" name="phoneNumber" class="input is-success {{ flashMessages.get('errors.phoneNumber') ? 'input is-danger' : '' }} " 
+                    value="{{contact.phoneNumber}}">
+                    <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                    </span>
+                </p>
+                @if (flashMessages.has('errors.phoneNumber'))
+                    <div class="has-text-danger">
+                        {{ flashMessages.get('errors.phoneNumber')    }}
+                    </div>
+                 @endif
+            </div>
 
+                        
+            <div class="control is-flex is-justify-content-center mt-6">
+                <button class="button is-link" type="submit">Update</button>
+            </div>
+    </div>
 
-
-
-
-
-
-
-
+</form>
 
 @endsection

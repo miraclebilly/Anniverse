@@ -9,9 +9,11 @@
     <h1>{{contact.email}}</h1>
     <h1>{{contact.phoneNumber}}</h1>
 </div>
-<div class="mt-3">
+<div class="mt-3 is-flex">
     <a class="ml-3" href="/contacts/{{contact.id}}/edit">Edit</a>
-    <a class="ml-3" href="">Delete</a>
+    <form action="/contacts/{{contact.id }}?_method=DELETE" method="POST">
+    <button type='submit' class='ml-3' onclick="return confirm('Delete {{contact.firstName}}?');">Delete</button>
+    </form>
 </div>
 
 
