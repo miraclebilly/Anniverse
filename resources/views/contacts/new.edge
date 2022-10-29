@@ -16,15 +16,12 @@
 
             <div class="field">
                 <label class="label">First Name</label>
-                <div class="control has-icons-left has-icons-right">
+                <div class="control has-icons-left">
                     <input type="text" name="firstName" placeholder="Miracle" class="input is-success {{ flashMessages.get('errors.firstName') ? 'input is-danger' : '' }} " 
                     value="{{ flashMessages.get('firstName') || ''}}"
                     >
                     <span class="icon is-small is-left">
                     <i class="fas fa-user"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
                     </span>
 
                     @if (flashMessages.has('errors.firstName'))
@@ -37,26 +34,21 @@
             
             <div class="field">
             <label class="label">Last Name</label>
-            <div class="control has-icons-left has-icons-right">
+            <div class="control has-icons-left">
                 <input class="input is-success" type="text" name="lastName" placeholder="Billy">
                 <span class="icon is-small is-left">
                 <i class="fas fa-user"></i>
                 </span>
-                <span class="icon is-small is-right">
-                <i class="fas fa-check"></i>
-                </span>
+                
             </div>
             </div>
             
             <div class="field">
             <label class="label">Email</label>
-            <div class="control has-icons-left has-icons-right">
+            <div class="control has-icons-left">
                 <input class="input is-success" type="email" name="email" placeholder="miracle@gmail.com">
                 <span class="icon is-small is-left">
                 <i class="fas fa-envelope"></i>
-                </span>
-                <span class="icon is-small is-right">
-                <i class="fas fa-exclamation-triangle"></i>
                 </span>
             </div>
             </div>
@@ -67,7 +59,7 @@
                     <input type="text" name="phoneNumber" placeholder="0801231234" class="input is-success {{ flashMessages.get('errors.phoneNumber') ? 'input is-danger' : '' }} " 
                     value="{{ flashMessages.get('phoneNumber') || ''}}">
                     <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
+                    <i class="fas fa-phone"></i>
                     </span>
                 </p>
                 @if (flashMessages.has('errors.phoneNumber'))

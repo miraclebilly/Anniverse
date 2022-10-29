@@ -1,0 +1,21 @@
+@layout('layouts/main')
+@set('title', 'add')
+
+@section('body')
+
+
+
+<a href="/contacts/{{auth.user.id}}/anniversaries/add">Add</a>
+<h1>Welcome Back</h1>
+<h2>Kindly Click the Link above to Add Anniversary for {{auth.user.firstName}}</h2>
+
+
+
+
+
+
+
+
+
+
+@endsection

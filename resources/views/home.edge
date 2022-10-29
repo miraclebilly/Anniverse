@@ -10,19 +10,36 @@
         <h4 class="is-size-3"><b>Kindly Login to access our awesome features</b></h4>
     </div>
 @else
-    <div>
-        <h4 class="is-size-3 ml-4 mt-4"><b>Contacts</b></h4>
+    <h4 class="is-size-3 mb-5">Contacts</h4>
+        
+    <div class="columns is-flex-wrap-wrap ">
         @each(contact in showContact)
-            <div class="content">
-                    <ul type="1 ">
-                      <li class="has-background-white ml-3 pl-3" style="width:10%; border-radius:25px">
-                      <a href="contacts/{{contact.id}}">{{contact.firstName}}</a>
-                      </li>
-                    </ul>
+            <div class="column is-one-third">
+                <div class="card">
+                    <div class="card-content">
+                        <div class="media">
+                            <div class="media-left">
+                                <figure class="image is-48x48">
+                                    <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                                </figure>
+                            </div>
+                            <div class="media-content">
+                            <p class="title is-4"><a href="/contacts/{{contact.id}}/anniversaries">{{contact.firstName}} {{contact.lastName || ""}}</a></p>
+                            <p class="subtitle is-6">{{contact.email || ""}}** {{contact.phoneNumber || ""}} </p>
+                            </div>
+                        </div>
+                    </div>
+                    <footer class="card-footer">
+                        <div class='is-flex '>
+                            <a href="/contacts/{{contact.id}}/edit" class="card-footer-item ">Edit</a>
+                            <form action="/contacts/{{contact.id }}?_method=DELETE" method="POST">
+                                <button class="card-footer-item is-link" type='submit'  onclick="return confirm('Delete {{contact.firstName}}?');">Delete</button>  
+                            </form> 
+                        </div>
+                    </footer>
+                </div>
+            </div>
         @endeach
     </div>
-    
 @endif
-
-
 @endsection 

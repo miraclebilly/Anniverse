@@ -37,11 +37,13 @@ Route.get('/', 'HomeController.home')
 //add users contact
 Route.group(()=>{
   Route.get('/contacts/new', 'ContactsController.new')
-  Route.post('/addcontact', 'ContactsController.addContact')
-  Route.get('/contacts/:id', 'ContactsController.show')
-  Route.get('/contacts/:id/edit', 'ContactsController.edit')
-  Route.put('/contacts/:id', 'ContactsController.update')
-  Route.delete('/contacts/:id', 'ContactsController.delete')
+  Route.post('/addcontact', 'HomeController.addContact')
+  Route.get('/contacts/:id/edit', 'HomeController.edit')
+  Route.put('/contacts/:id', 'HomeController.update')
+  Route.delete('/contacts/:id', 'HomeController.delete')
+
+  Route.get('/contacts/:id/anniversaries', 'AnniversariesController.show')
+  Route.get('/contacts/:id/anniversaries/add', 'AnniversariesController.add')
 }).middleware(['auth'])
 
 //authentication route
