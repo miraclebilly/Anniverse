@@ -44,6 +44,7 @@ Route.group(()=>{
 
   Route.get('/contacts/:id/anniversaries', 'AnniversariesController.show')
   Route.get('/contacts/:id/anniversaries/add', 'AnniversariesController.add')
+  Route.post('/contacts/:id/anniversaries', 'AnniversariesController.create')
 }).middleware(['auth'])
 
 //authentication route
