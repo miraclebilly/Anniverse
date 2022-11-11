@@ -51,7 +51,7 @@ export default class HomeController {
         contact.phoneNumber = request.input('phoneNumber')
 
         await contact.save()
-
+        session.flash({success: "Contact updated successfully"})
         return response.redirect('/')
     }
 

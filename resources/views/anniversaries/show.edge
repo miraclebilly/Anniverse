@@ -5,9 +5,18 @@
 
 
 
-<a href="/contacts/{{auth.user.id}}/anniversaries/add">Add</a>
-<h1>Welcome Back</h1>
-<h2>Kindly Click the Link above to Add Anniversary for {{auth.user.firstName}}</h2>
+<div class="card">
+    
+    <div class="card-content">
+    <p class="title is-4">{{userContact.firstName}} {{userContact.lastName}}</p>
+    <p class="subtitle is-6">Email Address: {{userContact.email}}</p>
+        <div class="content">
+            Phone Number : {{userContact.phoneNumber}}
+            <br>
+        </div>
+        <button class="button is-small"><a href="/contacts/{{userContact.id}}/anniversaries/add">Add Anniversary</a></button>
+    </div>
+</div>
 
 
 

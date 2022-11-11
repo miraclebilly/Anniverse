@@ -2,13 +2,124 @@
 @set('title', 'add')
 
 @section('body')
+<h1 class="mb-3">Add Anniversary</h1>
+{{--  <div class="dropdown is-active">
+  <div class="dropdown-trigger">
+    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu">
+      <span>Dropdown button</span>
+      <span class="icon is-small">
+        <i class="fas fa-angle-down" aria-hidden="true"></i>
+      </span>
+    </button>
+  </div>
+  <div class="dropdown-menu" id="dropdown-menu" role="menu">
+    <div class="dropdown-content">
+      <a href="#" class="dropdown-item">
+        Dropdown item
+      </a>
+      <a class="dropdown-item">
+        Other dropdown item
+      </a>
+      <a href="#" class="dropdown-item is-active">
+        Active dropdown item
+      </a>
+      <a href="#" class="dropdown-item">
+        Other dropdown item
+      </a>
+      <hr class="dropdown-divider">
+      <a href="#" class="dropdown-item">
+        With a divider
+      </a>
+    </div>
+  </div>
+</div>  --}}
 
 
+      
+<form action="/contacts/{{contact.id}}/anniversaries" method="POST">
 
-<h1>Ladies and Gentlemen, You have reached the Add Anniversaries Route</h1>
-
-
-
+  <input type="hidden" name="contactId" value={{contact.id}} />
+  <div class="columns">
+      <div class="column mt-3" style="border-style:solid" >
+          <label for="anniversary">Anniversary</label>
+          <br>
+          <select name="anniversary" id="anniversary">
+              <option name="birthday" value="birthday">Birthday</option>
+              <option name="marriage" value="marriage">Marriage</option>
+              <option name="work" value="work">Work</option>
+              <option name="custom" value="custom">Custom</option>
+          </select>
+      </div>
+      <div class="column mt-3 " style="border-style:solid" >
+          <label for="anniversary">Anniversary Date</label>
+          <br>
+          <div class="is-flex">
+              <div>
+                <label for="">*Day</label>
+                  <select name="day" id="day">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
+                      <option value="4">5</option>
+                      <option value="4">6</option>
+                      <option value="4">7</option>
+                      <option value="4">8</option>
+                      <option value="4">9</option>
+                      <option value="4">10</option>
+                      <option value="4">11</option>
+                      <option value="4">12</option>
+                      <option value="4">13</option>
+                      <option value="4">14</option>
+                      <option value="4">15</option>
+                      <option value="4">16</option>
+                      <option value="4">17</option>
+                      <option value="4">18</option>
+                      <option value="4">19</option>
+                      <option value="4">20</option>
+                      <option value="4">21</option>
+                      <option value="4">22</option>
+                      <option value="4">23</option>
+                      <option value="4">24</option>
+                      <option value="4">25</option>
+                      <option value="4">26</option>
+                      <option value="4">27</option>
+                      <option value="4">28</option>
+                      <option value="4">29</option>
+                      <option value="4">30</option>
+                      <option value="4">31</option>
+                  </select>
+              </div>
+              <div class="ml-3">
+                <label for="">*Month</label>
+                  <select name="month" id="month">
+                      <option name="january" value=1>January</option>
+                      <option name="february" value=2>February</option>
+                      <option name="march" value=3>March</option>
+                      <option name="april" value=4>April</option>
+                      <option name="may" value=5>May</option>
+                      <option name="june" value=6>June</option>
+                      <option name="july" value=7>July</option>
+                      <option name="august" value=8>August</option>
+                      <option name="september" value=9>September</option>
+                      <option name="october" value=10>October</option>
+                      <option name="november" value=11>November</option>
+                      <option name="december" value=12>December</option>
+                  </select>
+              </div>
+              <div class="ml-3">
+                  <label for="">Year</label>
+                    <input name="year" type="text">
+                    <br>
+                    <p class="ml-6">(optional)</p>
+                </div>
+          </div>
+          </div>
+         
+  </div>
+   
+  <button type="submit">Add</button>
+</form>
 
 
 

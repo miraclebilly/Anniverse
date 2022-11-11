@@ -6,11 +6,13 @@ export default class extends BaseSchema {
   public async up () {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id')
+      table.integer('user_id').references('users.id').index().notNullable()
       table.integer('contact_id').references('contacts.id').index().notNullable()
-      table.string('birthday', 255).nullable()
-      table.string('work', 255).nullable()
-      table.string('marriage', 255).nullable()
-      table.string('date', 100).notNullable()
+      table.string('anniversary_type', 255).notNullable().index()
+      table.integer('day').nullable()
+      table.integer('month').notNullable()
+      table.integer('year').nullable()
+      
 
       /**
        * Uses timestamptz for PostgreSQL and DATETIME2 for MSSQL

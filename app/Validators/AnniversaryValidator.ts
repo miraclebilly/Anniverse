@@ -23,7 +23,9 @@ export default class AnniversaryValidator {
    *     ])
    *    ```
    */
-  public schema = schema.create({})
+  public schema = schema.create({
+    contactId: schema.number()
+  })
 
   /**
    * Custom messages for validation failures. You can make use of dot notation `(.)`
