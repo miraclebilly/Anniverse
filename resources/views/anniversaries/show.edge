@@ -4,19 +4,48 @@
 @section('body')
 
 
-
-<div class="card">
     
-    <div class="card-content">
-    <p class="title is-4">{{userContact.firstName}} {{userContact.lastName}}</p>
-    <p class="subtitle is-6">Email Address: {{userContact.email}}</p>
-        <div class="content">
-            Phone Number : {{userContact.phoneNumber}}
-            <br>
+        <div class="card">    
+            <div class="card-content">
+                <div class="is-flex is-justify-content-space-between">
+                    <p class="title is-4 is-capitalized">{{userContact.firstName}} {{userContact.lastName}}</p>
+                    <button class="button is-small has-background-light"><a href="/contacts/{{userContact.id}}/anniversaries/add">Add Anniversary</a></button>
+                </div>
+                
+                <p class="subtitle is-6">Email Address: {{userContact.email}}</p>
+            
+                <div class="content">
+                    Phone Number : {{userContact.phoneNumber}}
+                    <br>
+                </div>
+                <hr>
+            <p class="title is-4 is-capitalized">{{anniversaryHeader || ''}}</p>
+                @each ((anniversary, index) in anniversaries)
+                    <div class="is-flex">
+                            <div>
+                                <p class="subtitle is-6 mb-3 is-capitalized">{{index + 1}}. <span class="has-text-weight-semibold"> {{anniversary.anniversaryType}}:</span>
+                                        {{anniversary.day}}-{{anniversary.month}}-{{anniversary.year || ''}} 
+                                </p>
+                            </div>
+                            <div>
+                            <button class="ml-3"><a href="/contacts/{{userContact.id}}/anniversaries/{{anniversary.id}}/edit">Edit </a></button>
+                            </div>
+                            <div>
+                            <form action="/contacts/{{userContact.id}}/anniversaries/{{anniversary.id}}?_method=DELETE" method="POST">
+                                    <button class="ml-3 is-danger is-light" type="submit"><a>Delete</a></button>
+                                </form>
+                            </div>
+                    </div>
+                     
+                @endeach
+           
+            </div>
         </div>
-        <button class="button is-small"><a href="/contacts/{{userContact.id}}/anniversaries/add">Add Anniversary</a></button>
-    </div>
-</div>
+    
+        
+
+
+
 
 
 

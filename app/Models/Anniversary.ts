@@ -21,10 +21,10 @@ export default class Anniversary extends BaseModel {
   public day: number
 
   @column()
-  public Month: number
+  public month: number
 
   @column()
-  public Year: number
+  public year: number
  
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
