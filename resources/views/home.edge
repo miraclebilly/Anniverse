@@ -30,12 +30,11 @@
                         </div>
                     </div>
                     <footer class="card-footer">
-                        <div class='is-flex '>
                             <a href="/contacts/{{contact.id}}/edit" class="card-footer-item ">Edit</a>
-                            <form action="/contacts/{{contact.id }}?_method=DELETE" method="POST">
-                                <button class="card-footer-item is-link" type='submit'  onclick="return confirm('Delete {{contact.firstName}}?');">Delete</button>  
-                            </form> 
-                        </div>
+                            <form action="/contacts/{{contact.id }}?_method=DELETE" method="POST" class="card-footer-item">
+                                <button class="button is-small is-link" type='submit'  onclick="return confirm('Delete {{contact.firstName}}?');">Delete</button>  
+                            </form>
+                       
                     </footer>
                 </div>
             </div>

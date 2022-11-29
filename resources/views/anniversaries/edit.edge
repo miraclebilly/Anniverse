@@ -1,37 +1,36 @@
 @layout('layouts/main')
-@set('title', 'add')
+@set('title', 'edit')
 
 @section('body')
 
-<form class="is-flex is-flex-direction-column is-align-items-center" action="/contacts/{{contact.id}}/anniversaries" method="POST">
+
+<form class="is-flex is-flex-direction-column is-align-items-center"action="/contacts/{{contact.id}}/anniversaries/{{anniversary.id}}?_method=PUT"
+method="POST" enctype="multipart/form-data">
   <input type="hidden" name="contactId" value={{contact.id}}>
-    <h2 class="is-size-2 m-4 ml-6">Add Anniversary</h2>
+    <h2 class="is-size-2 m-4 ml-6">Edit Anniversary</h2>
     
     
     <div class="m-4 ml-6 has-background-white p-5" style="width: 30%">
 
-          
-          <div class="field">
-            <label class="label"><span class="has-text-danger">*</span> Select Anniversary</label>
-            <div class = "is-flex">
-              <div class="control">
-                  <div class="select">          
-                      <select name="anniversary" id="anniversary">
-                          <option name="birthday" value="birthday">Birthday</option>
-                          <option name="marriage" value="marriage">Marriage</option>
-                          <option name="work" value="work">Work</option>
-                          <option name="custom" value="custom">Custom</option>
-                      </select>
-                  </div>
-              </div>
-              <div class="control ml-3 is-hidden custom_anniversary_wrapper">
-                  <input type="text" class="input " placeholder="Enter Anniversary type" name="custom_anniversary">
-              </div>
-            </div>
-        </div>
-        
-
-          
+            <div class="field">
+                    <label class="label"><span class="has-text-danger">*</span> Select Anniversary</label>
+                    <div class = "is-flex">
+                      <div class="control">
+                          <div class="select">          
+                              <select name="anniversary" id="anniversary">
+                                  <option name="birthday" value="birthday" {{anniversary.anniversaryType == 'birthday' ? 'selected' : '' }}>Birthday</option>
+                                  <option name="marriage" value="marriage" {{anniversary.anniversaryType == 'marriage' ? 'selected' : '' }}>Marriage</option>
+                                  <option name="work" value="work" {{anniversary.anniversaryType == 'work' ? 'selected' : '' }}>Work</option>
+                                  <option name="custom" value="custom" {{anniversary.anniversaryType == 'custom' ? 'selected' : '' }}>Custom</option>
+                              </select>
+                          </div>
+                      </div>
+                      <div class="control ml-3 is-hidden custom_anniversary_wrapper">
+                      <input type="text" class="input " value="{{anniversary.anniversaryType}}" placeholder="Enter Anniversary type" name="custom_anniversary" >
+                      </div>
+                    </div>
+                </div>
+                    
           
           <div class="field">
               <label class="label"><span class="has-text-danger">*</span>Select Day</label>
@@ -80,18 +79,18 @@
               <div class="control">
                   <div class="select">          
                       <select name="month" id="month">
-                          <option name="january" value="1">January</option>
-                          <option name="february" value="2">February</option>
-                          <option name="march" value="3">March</option>
-                          <option name="april" value="4">April</option>
-                          <option name="may" value="5">May</option>
-                          <option name="june" value="6">June</option>
-                          <option name="july" value="7">July</option>
-                          <option name="august" value="8">August</option>
-                          <option name="september" value="9">September</option>
-                          <option name="october" value="10">October</option>
-                          <option name="november" value="11">November</option>
-                          <option name="december" value="12">December</option>
+                          <option name="january" value='1' {{anniversary.month == '1' ? 'selected' : '' }}>January</option>
+                          <option name="february" value='2' {{anniversary.month == '2' ? 'selected' : '' }}>February</option>
+                          <option name="march" value='3' {{anniversary.month == '3' ? 'selected' : '' }}>March</option>
+                          <option name="april" value='4' {{anniversary.month == '4' ? 'selected' : '' }}>April</option>
+                          <option name="may" value='5' {{anniversary.month == '5' ? 'selected' : '' }}>May</option>
+                          <option name="june" value='6' {{anniversary.month == '6' ? 'selected' : '' }}>June</option>
+                          <option name="july" value='7' {{anniversary.month == '7' ? 'selected' : '' }} >July</option>
+                          <option name="august" value='8' {{anniversary.month == '8' ? 'selected' : '' }} >August</option>
+                      <option name="september" value='9' {{anniversary.month == '9' ? 'selected' : '' }}>September</option>
+                          <option name="october" value='10' {{anniversary.month == '10' ? 'selected' : '' }}>October</option>
+                          <option name="november" value='11' {{anniversary.month == '11' ? 'selected' : '' }}>November</option>
+                          <option name="december" value='12' {{anniversary.month == '12' ? 'selected' : '' }}>December</option>
                       </select>
                   </div>
               </div>
@@ -100,17 +99,18 @@
             <div class="field">
             <label class="label">Year (Optional)</label>
                 <p class="control">
-                    <input type="text" name="year" class="input is-success" placeholder="2000">
+                <input type="text" name="year" class="input is-success" placeholder="2000" value="{{anniversary.year}}">
                 </p>
             </div>
 
                         
             <div class="control is-flex is-justify-content-center mt-6">
-                <button class="button is-link" type="submit">Add</button>
+                <button class="button is-link" type="submit">Update</button>
             </div>
     </div>
 
 </form>
+
 
 <script>
 
@@ -126,7 +126,6 @@
     })
 
 </script>
-
 
 
 @endsection
